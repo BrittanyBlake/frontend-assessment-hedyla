@@ -4,10 +4,21 @@ const Forms = () => {
   const [distance, setDistance] = useState(1);
   const [cost, setCost] = useState(1);
   const [total, setTotal] = useState(0);
+  // const [fee, setFee] = useState(0);
 
   const handleDistanceChange = e => {
     setDistance(e.target.value);
     console.log('distance:', distance);
+  };
+
+  const handleFee = e => {
+    const vehicle = e.target.value;
+    if (vehicle === 'van') {
+      setCost(0.25);
+    } else if (vehicle === 'truck') {
+      setCost(0.50);
+    }
+    console.log(vehicle, cost);
   };
 
   const handleCostChange = e => {
@@ -17,6 +28,8 @@ const Forms = () => {
 
   const handleClick = () => {
     setTotal(distance * cost);
+    console.log(distance, 'distance');
+    console.log(cost, 'cost');
   };
 
   return (
@@ -26,6 +39,14 @@ const Forms = () => {
         <label htmlFor="distance">
           Distance:
           <input name="distance" type="text" onChange={handleDistanceChange} />
+        </label>
+        <br />
+        <label htmlFor="fee">
+          Pick your vehicle to determine a fee:
+          <select onChange={handleFee}>
+            <option value="truck">Truck</option>
+            <option value="van">Van</option>
+          </select>
         </label>
         <br />
         <label htmlFor="cost">
