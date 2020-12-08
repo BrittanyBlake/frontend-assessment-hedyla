@@ -1,37 +1,37 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Distance from '../api/Distance';
+// import _ from 'lodash';
+import { GetDistance } from '../redux/actions/index';
 
 const HomePage = () => {
   const dispatch = useDispatch();
-  const autoDistance = useSelector(state => state.distance);
-  //   const allFootballHighlight = useSelector((state) => state.football);
-  //   const filterFootballHighlights = useSelector((state) => state.filter);
+  const distanceList = useSelector(state => state.distance);
 
-  useEffect(() => {
-    const distances = () => {
-      dispatch(Distance.getDistance);
-      console.log('dispatched', Distance.getDistance);
-    };
-    distances();
-    console.log('distances', distances());
-  }, [dispatch]);
+  const FetchData = () => {
+    dispatch(GetDistance());
+  };
 
-  console.log('not api file', autoDistance);
+  // console.log('distance:', distanceList.routes[0].distance);
 
-  //   let filteredHighlights = [];
-  //   if (!allFootballHighlight) {
-  //     return null;
-  //   }
-  //   filteredHighlights = allFootballHighlight.filter((data) =>
-  //     data.name.toLowerCase().includes(filterFootballHighlights.toLowerCase())
-  //   );
+  React.useEffect(() => {
+    FetchData();
+  }, []);
 
+  //   const ShowData = () => {
+  //     if (!_.isEmpty(distanceList.data)) {
+  //       return (
+  //         <div />
+  //       );
+  //     }
+  //     return <p> unable to get Data</p>;
+  //   };
   return (
     <div>
-      {/* autoDistance.data */}
-      <h1> API WIL GO HERE</h1>
-
+      <h1>
+        {' '}
+        Distance =
+        {distanceList.routes[0].distance}
+      </h1>
     </div>
   );
 };
