@@ -26,7 +26,7 @@ const HomePage = () => {
     setDestCord(e.target.value);
     console.log('destination', destCord);
   };
-  // Barcelona '41.3851, 2.1734'
+  // Barcelona '41.3851,2.1734'
   // Granada 37.1773,3.5986
 
   React.useEffect(() => {
