@@ -7,6 +7,7 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const distanceList = useSelector(state => state.distance);
   const [originCord, setOriginCord] = useState('13.428555,52.523219');
+  const [destCord, setDestCord] = useState('13.397634,52.529407');
 
   const FetchData = (origin, dest) => {
     dispatch(GetDistance(origin, dest));
@@ -18,28 +19,19 @@ const HomePage = () => {
     setOriginCord(e.target.value);
     console.log('origin', originCord);
   };
+
+  const handleDestination = e => {
+    e.preventDefault();
+    console.log(e.target.value);
+    setDestCord(e.target.value);
+    console.log('destination', destCord);
+  };
   // Barcelona '41.3851, 2.1734'
+  // Granada 37.1773,3.5986
+
   React.useEffect(() => {
-    FetchData(originCord, '13.397634,52.529407');
-  }, [originCord]);
-
-  // 13.38886, 52.517037;
-
-  //   const ShowData = () => {
-  //     if (!_.isEmpty(distanceList.data)) {
-  //       return (
-  //         <div />
-  //       );
-  //     }
-  //     return <p> unable to get Data</p>;
-  //   };
-
-  //  {distanceList.routes[0].distance.length ?
-  //       <h1>
-  //         {' '}
-  //         Distance =
-  //         {distanceList.routes[0].distance}
-  //       </h1>
+    FetchData(originCord, destCord);
+  }, [originCord, destCord]);
 
   return (
     <div>
@@ -48,15 +40,14 @@ const HomePage = () => {
         {distanceList.routes ? (
           <h1>
             Distance =
-            {' '}
-            { distanceList.routes[0].distance}
+            {distanceList.routes[0].distance}
           </h1>
         ) : null}
-
       </div>
 
       <form>
         <input type="text" onChange={handleOrigin} />
+        <input type="text" onChange={handleDestination} />
       </form>
     </div>
   );
