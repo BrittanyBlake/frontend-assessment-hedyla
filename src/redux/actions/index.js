@@ -1,6 +1,6 @@
-const getDistance = distance => ({
+export const getAutoDistance = distance => ({
   type: 'GET_DISTANCE',
   payload: distance,
 });
 
-export default getDistance;
+export default getAutoDistance;

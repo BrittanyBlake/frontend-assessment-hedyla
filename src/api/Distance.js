@@ -7,7 +7,8 @@ const Distance = (() => {
       const data = await axios.get(
         'http://router.project-osrm.org/route/v1/driving/13.388860,52.517037;13.397634,52.529407?overview=false',
       );
-      dispatch(reducerAction.getDistance(data.data));
+      dispatch(reducerAction.getAutoDistance(data.data));
+      console.log('api');
     } catch (error) {
       //   dispatch(reducerAction.formErrors(error.response.data.message));
       console.log(error);
