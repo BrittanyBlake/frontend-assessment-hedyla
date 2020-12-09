@@ -1,22 +1,23 @@
-import React from "react";
-import Button from "@material-ui/core/Button";
-import useStyles from './Button.styles'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Button from '@material-ui/core/Button';
+import useStyles from './Button.styles';
 
-
-const Button = ({handleClick}) => {
+const OutlinedButton = ({ handleClick }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <Button variant="outlined" color="primary" onClick={handleClick}>
-        Primary
+        Calculate Cost
       </Button>
     </div>
   );
-}
+};
 
-export default Button;
+export default OutlinedButton;
 
-Button.propTypes = {
+OutlinedButton.propTypes = {
   handleClick: PropTypes.func.isRequired,
+  // label: PropTypes.string.isRequired,
 };

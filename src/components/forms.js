@@ -4,6 +4,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import Input from './Form/Input';
+import OutlinedButton from './Button/Button';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -79,10 +80,11 @@ const Forms = () => {
         <h3> Enter a fee in €/km: </h3>
         <Input label="€/km" handleChange={handleFee} />
       </form>
-      <button type="button" onClick={handleClick}>
+      <OutlinedButton handleClick={handleClick} />
+      {/* <button type="button" onClick={handleClick}>
         {' '}
         Calculate
-      </button>
+  </button> */}
       <h2>
         Total cost of route: €
         {total}
