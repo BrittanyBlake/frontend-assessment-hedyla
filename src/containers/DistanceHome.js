@@ -4,6 +4,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
 import { GetDistance } from '../redux/actions/index';
 import Input from '../components/Form/Input';
 import OutlinedButton from '../components/Button/Button';
@@ -74,8 +76,19 @@ const HomePage = () => {
   return (
     <div>
       <h2> Calculate costs by entering the coordinates</h2>
-      <Input label="Origin Coordinates" handleChange={handleOrigin} />
-      <Input label="Destination Coordinates" handleChange={handleDestination} />
+      <Container maxWidth="sm">
+        <Grid container spacing={3} maxWidth="xs">
+          <Grid item xs={6}>
+            <Input label="Origin Coordinates" handleChange={handleOrigin} />
+          </Grid>
+          <Grid item xs={6}>
+            <Input
+              label="Destination Coordinates"
+              handleChange={handleDestination}
+            />
+          </Grid>
+        </Grid>
+      </Container>
 
       <h3> Pick your vehicle to select a pre-determined fee: </h3>
       <FormControl variant="filled" className={classes.formControl}>
