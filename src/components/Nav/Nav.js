@@ -9,7 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
 import useStyles from './Nav.styles';
 
-export default function ButtonAppBar() {
+const ButtonAppBar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const classes = useStyles();
 
@@ -55,4 +55,6 @@ export default function ButtonAppBar() {
       </AppBar>
     </div>
   );
-}
+};
+
+export default ButtonAppBar;

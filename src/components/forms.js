@@ -1,6 +1,22 @@
 import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import FormControl from '@material-ui/core/FormControl';
+import Input from './Form/Input';
+
+const useStyles = makeStyles(theme => ({
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
 
 const Forms = () => {
+  const classes = useStyles();
   const [distance, setDistance] = useState(1);
   const [cost, setCost] = useState();
   const [total, setTotal] = useState(0);
@@ -38,27 +54,30 @@ const Forms = () => {
 
   return (
     <div>
-      <h1>FORM</h1>
       <form>
-        <label htmlFor="distance">
-          Distance:
-          <input name="distance" type="text" onChange={handleDistanceChange} />
-        </label>
-        <br />
-        <label htmlFor="fee">
-          Pick your vehicle to determine a fee:
-          <select onChange={handleFee}>
-            <option value="">-</option>
-            <option value="truck">Truck</option>
-            <option value="van">Van</option>
-            <option value="car">Car</option>
-          </select>
-        </label>
-        <br />
-        <label htmlFor="cost">
-          €/km:
-          <input name="€/km" type="text" onChange={handleFee} />
-        </label>
+        <h3> Enter the Total Distance </h3>
+        <Input label="Distance" handleChange={handleDistanceChange} />
+
+        <h3> Pick your vehicle to select a pre-determined fee: </h3>
+        <FormControl variant="filled" className={classes.formControl}>
+          <Select
+            labelId="demo-simple-select-filled-label"
+            id="demo-simple-select-filled"
+            onChange={handleFee}
+            style={{ width: '250px' }}
+          >
+            <MenuItem value="">
+              <em>Pick One</em>
+            </MenuItem>
+            <MenuItem value="truck">Truck</MenuItem>
+            <MenuItem value="van">Van</MenuItem>
+            <MenuItem value="car">Car</MenuItem>
+          </Select>
+        </FormControl>
+
+        <h4> or </h4>
+        <h3> Enter a fee in €/km: </h3>
+        <Input label="€/km" handleChange={handleFee} />
       </form>
       <button type="button" onClick={handleClick}>
         {' '}
