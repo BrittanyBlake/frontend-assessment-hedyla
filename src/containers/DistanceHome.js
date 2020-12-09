@@ -9,6 +9,8 @@ import Container from '@material-ui/core/Container';
 import { GetDistance } from '../redux/actions/index';
 import Input from '../components/Form/Input';
 import OutlinedButton from '../components/Button/Button';
+import MapContainer from '../components/maps/MapContainer';
+// , GetMap
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -32,6 +34,7 @@ const HomePage = () => {
 
   const FetchData = (origin, dest) => {
     dispatch(GetDistance(origin, dest));
+    // dispatch(GetMap());
   };
 
   const handleOrigin = e => {
@@ -71,6 +74,7 @@ const HomePage = () => {
   const handleClick = () => {
     setTotal(distanceList.routes[0].distance * cost);
     console.log(cost, 'cost');
+    console.log('distance', distanceList.routes[0].distance);
   };
 
   return (
@@ -116,6 +120,7 @@ const HomePage = () => {
         Total cost of route: €
         {total}
       </h2>
+      <MapContainer />
     </div>
   );
 };

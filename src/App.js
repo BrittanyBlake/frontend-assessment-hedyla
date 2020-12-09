@@ -17,6 +17,7 @@ function App() {
         <Route path="/auto" exact component={DistanceHome} />
         <Redirect to="/" />
       </Switch>
+
     </div>
   );
 }

@@ -5,3 +5,8 @@
 a {
   text-decoration: none;
 }
+
+.map{
+  height: 300px;
+  width: 300px;
+}
