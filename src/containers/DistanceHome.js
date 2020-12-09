@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
@@ -6,11 +7,12 @@ import FormControl from '@material-ui/core/FormControl';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
+import {
+  Map, Marker, Polyline, GoogleApiWrapper,
+} from 'google-maps-react';
 import { GetDistance } from '../redux/actions/index';
 import Input from '../components/Form/Input';
 import OutlinedButton from '../components/Button/Button';
-import MapContainer from '../components/maps/MapContainer';
-// , GetMap
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -22,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const HomePage = () => {
+const HomePage = ({ google }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const distanceList = useSelector(state => state.distance);
@@ -31,6 +33,13 @@ const HomePage = () => {
   // const [distance] = useState(1);
   const [cost, setCost] = useState();
   const [total, setTotal] = useState(0);
+  const [center, setCenter] = useState({
+    lat: originCord.split(',')[0],
+    lng: originCord.split(',')[1],
+  });
+  const [zoom, setZoom] = useState(3);
+
+  console.log('center', center);
 
   const FetchData = (origin, dest) => {
     dispatch(GetDistance(origin, dest));
@@ -55,6 +64,9 @@ const HomePage = () => {
 
   React.useEffect(() => {
     FetchData(originCord, destCord);
+    console.log('split', originCord.split(','));
+    console.log('one', originCord.split(',')[0]);
+    console.log('one', originCord.split(',')[1]);
   }, [originCord, destCord]);
 
   const handleFee = e => {
@@ -75,7 +87,20 @@ const HomePage = () => {
     setTotal(distanceList.routes[0].distance * cost);
     console.log(cost, 'cost');
     console.log('distance', distanceList.routes[0].distance);
+    setCenter({
+      lat: originCord.split(',')[0],
+      lng: originCord.split(',')[1],
+    });
+    console.log('new center', center);
+    setZoom(5);
   };
+
+  const triangleCoords = [
+    { lat: originCord.split(',')[0], lng: originCord.split(',')[1] },
+    { lat: destCord.split(',')[0], lng: destCord.split(',')[1] },
+  ];
+
+  console.log('tri', triangleCoords);
 
   return (
     <div>
@@ -119,10 +144,52 @@ const HomePage = () => {
       <h2>
         Total cost of route: €
         {total}
+        {' '}
       </h2>
-      <MapContainer />
+      <div>
+        <Map
+          style={{
+            height: '75vh',
+          }}
+          google={google}
+          initialCenter={center}
+          zoom={zoom}
+        >
+          <Marker
+            position={{
+              lat: originCord.split(',')[0],
+              lng: originCord.split(',')[1],
+            }}
+          />
+          <Marker
+            position={{
+              lat: destCord.split(',')[0],
+              lng: destCord.split(',')[1],
+            }}
+          />
+          <Polyline
+            path={[{
+              lat: originCord.split(',')[0],
+              lng: originCord.split(',')[1],
+            }, {
+              lat: destCord.split(',')[0],
+              lng: destCord.split(',')[1],
+            }]}
+            strokeColor="#0000FF"
+            strokeOpacity={0.8}
+            strokeWeight={2}
+          />
+        </Map>
+      </div>
     </div>
   );
 };
 
-export default HomePage;
+export default GoogleApiWrapper({
+  apiKey: 'AIzaSyCEV3kAUq5hZyP-LfU9hhy4eNaiuQXRvcc',
+})(HomePage);
+
+HomePage.propTypes = {
+  // defaultValue: PropTypes.string.isRequired,
+  google: PropTypes.string.isRequired,
+};

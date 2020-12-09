@@ -9,7 +9,9 @@ const triangleCoords = [
   { lat: 17.285236780568827, lng: -62.69656589128129 },
 ];
 
-const MapContainer = ({ google }) => (
+const MapContainer = ({
+  google, orgLat, orgLng, destLat, destLng,
+}) => (
   <div>
     <Map
       style={{
@@ -21,10 +23,8 @@ const MapContainer = ({ google }) => (
         lng: -62.686008717148326,
       }}
     >
-      <Marker
-        position={{ lat: 17.294005687070193, lng: -62.686008717148326 }}
-      />
-      <Marker position={{ lat: 17.285236780568827, lng: -62.69656589128129 }} />
+      <Marker position={{ lat: { orgLat }, lng: { orgLng } }} />
+      <Marker position={{ lat: { destLat }, lng: { destLng } }} />
       <Polyline
         path={triangleCoords}
         strokeColor="#0000FF"
@@ -34,6 +34,7 @@ const MapContainer = ({ google }) => (
     </Map>
   </div>
 );
+
 // export default MapContainer
 
 export default GoogleApiWrapper({
@@ -43,4 +44,8 @@ export default GoogleApiWrapper({
 MapContainer.propTypes = {
   // defaultValue: PropTypes.string.isRequired,
   google: PropTypes.string.isRequired,
+  orgLat: PropTypes.string.isRequired,
+  orgLng: PropTypes.string.isRequired,
+  destLat: PropTypes.string.isRequired,
+  destLng: PropTypes.string.isRequired,
 };
