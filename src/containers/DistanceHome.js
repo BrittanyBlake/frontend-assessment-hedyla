@@ -28,12 +28,12 @@ const HomePage = ({ google }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const distanceList = useSelector(state => state.distance);
-  const [originCord, setOriginCord] = useState('13.428555,52.523219');
-  const [destCord, setDestCord] = useState('13.397634,52.529407');
+  const [originCord, setOriginCord] = useState('0,0');
+  const [destCord, setDestCord] = useState('0,0');
   // const [distance] = useState(1);
   const [cost, setCost] = useState();
   const [total, setTotal] = useState(0);
-  const [center, setCenter] = useState({
+  const [center] = useState({
     lat: originCord.split(',')[0],
     lng: originCord.split(',')[1],
   });
@@ -87,11 +87,11 @@ const HomePage = ({ google }) => {
     setTotal(distanceList.routes[0].distance * cost);
     console.log(cost, 'cost');
     console.log('distance', distanceList.routes[0].distance);
-    setCenter({
-      lat: originCord.split(',')[0],
-      lng: originCord.split(',')[1],
-    });
-    console.log('new center', center);
+    // setCenter({
+    //   lat: originCord.split(',')[0],
+    //   lng: originCord.split(',')[1],
+    // });
+    // console.log('new center', center);
     setZoom(5);
   };
 
