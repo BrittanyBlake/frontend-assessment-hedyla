@@ -33,7 +33,7 @@ const HomePage = ({ google }) => {
   // const [distance] = useState(1);
   const [cost, setCost] = useState();
   const [total, setTotal] = useState(0);
-  const [center] = useState({
+  const [center, setCenter] = useState({
     lat: originCord.split(',')[0],
     lng: originCord.split(',')[1],
   });
@@ -87,11 +87,11 @@ const HomePage = ({ google }) => {
     setTotal(distanceList.routes[0].distance * cost);
     console.log(cost, 'cost');
     console.log('distance', distanceList.routes[0].distance);
-    // setCenter({
-    //   lat: originCord.split(',')[0],
-    //   lng: originCord.split(',')[1],
-    // });
-    // console.log('new center', center);
+    setCenter({
+      lat: originCord.split(',')[0],
+      lng: originCord.split(',')[1],
+    });
+    console.log('new center', center);
     setZoom(5);
   };
 
