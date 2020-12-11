@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
+const useStyles = makeStyles(({ typography, palette }) => ({
   legalLink: {
     ...typography.caption,
     justifyContent: 'center',
@@ -9,17 +9,6 @@ const useStyles = makeStyles(({ typography, palette, breakpoints }) => ({
         ? 'rgba(255,255,255,0.57)'
         : palette.text.secondary,
     position: 'relative',
-    [breakpoints.up('sm')]: {
-      '&:not(:first-of-type)': {
-        '&:before': {
-          content: '"|"',
-          display: 'block',
-          position: 'absolute',
-          left: 0,
-          bottom: 0,
-        },
-      },
-    },
   },
   newsletter: {
     fontSize: typography.caption.fontSize,
