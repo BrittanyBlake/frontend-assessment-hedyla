@@ -89,10 +89,10 @@ const ButtonAppBar = () => {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>
-                  <Link to="/">Calculate distance Manually</Link>
+                  <Link to="/manual">Calculate distance Manually</Link>
                 </MenuItem>
                 <MenuItem onClick={handleClose}>
-                  <Link to="/auto"> Calculate distance with coordinates</Link>
+                  <Link to="/"> Calculate distance with coordinates</Link>
                 </MenuItem>
               </Menu>
               <Button

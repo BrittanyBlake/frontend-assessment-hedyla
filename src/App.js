@@ -14,8 +14,8 @@ function App() {
       <Nav />
 
       <Switch>
-        <Route path="/" exact component={Forms} />
-        <Route path="/auto" exact component={DistanceHome} />
+        <Route path="/manual" exact component={Forms} />
+        <Route path="/" exact component={DistanceHome} />
         <Redirect to="/" />
       </Switch>
       <Footer />
