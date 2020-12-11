@@ -1,28 +1,25 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import FormControl from '@material-ui/core/FormControl';
+// import { makeStyles } from '@material-ui/core/styles';
+
+// import FormControl from '@material-ui/core/FormControl';
 import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
-import LocalShippingTwoToneIcon from '@material-ui/icons/LocalShippingTwoTone';
-import AirportShuttleTwoToneIcon from '@material-ui/icons/AirportShuttleTwoTone';
-import DriveEtaTwoToneIcon from '@material-ui/icons/DriveEtaTwoTone';
+
 import Input from './Form/Input';
 import OutlinedButton from './Button/Button';
-
-const useStyles = makeStyles(theme => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
+import Dropdown from './Form/Dropdown';
+// const useStyles = makeStyles(theme => ({
+//   formControl: {
+//     margin: theme.spacing(1),
+//     minWidth: 120,
+//   },
+//   selectEmpty: {
+//     marginTop: theme.spacing(2),
+//   },
+// }));
 
 const Forms = () => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const [distance, setDistance] = useState(1);
   const [cost, setCost] = useState();
   const [total, setTotal] = useState(0);
@@ -61,31 +58,7 @@ const Forms = () => {
           <Input label="km" handleChange={handleDistanceChange} />
 
           <h4> Pick your vehicle to select a pre-determined fee: </h4>
-          <FormControl className={classes.formControl}>
-            <Select onChange={handleFee} style={{ width: '250px' }}>
-              <MenuItem value="">
-                <em>Pick One</em>
-              </MenuItem>
-              <MenuItem value="truck">
-                {' '}
-                <LocalShippingTwoToneIcon />
-                {' '}
-                Truck
-              </MenuItem>
-              <MenuItem value="van">
-                {' '}
-                <AirportShuttleTwoToneIcon />
-                {' '}
-                Van
-              </MenuItem>
-              <MenuItem value="car">
-                {' '}
-                <DriveEtaTwoToneIcon />
-                {' '}
-                Car
-              </MenuItem>
-            </Select>
-          </FormControl>
+          <Dropdown handleFee={handleFee} />
 
           <h3> or </h3>
           <h4> Enter a fee in €/km: </h4>

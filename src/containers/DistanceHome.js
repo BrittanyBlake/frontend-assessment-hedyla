@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import FormControl from '@material-ui/core/FormControl';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
@@ -14,19 +11,20 @@ import {
 import { GetDistance } from '../redux/actions/index';
 import Input from '../components/Form/Input';
 import OutlinedButton from '../components/Button/Button';
+import Dropdown from '../components/Form/Dropdown';
 
-const useStyles = makeStyles(theme => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
+// const useStyles = makeStyles(theme => ({
+//   formControl: {
+//     margin: theme.spacing(1),
+//     minWidth: 120,
+//   },
+//   selectEmpty: {
+//     marginTop: theme.spacing(2),
+//   },
+// }));
 
 const HomePage = ({ google }) => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const dispatch = useDispatch();
   const distanceList = useSelector(state => state.distance);
   const [originCord, setOriginCord] = useState('0,0');
@@ -118,19 +116,7 @@ const HomePage = ({ google }) => {
           </Container>
 
           <h4> Pick your vehicle to select a pre-determined fee: </h4>
-          <FormControl className={classes.formControl}>
-            <Select
-              onChange={handleFee}
-              style={{ width: '250px' }}
-            >
-              <MenuItem value="">
-                <em>Pick One</em>
-              </MenuItem>
-              <MenuItem value="truck">Truck</MenuItem>
-              <MenuItem value="van">Van</MenuItem>
-              <MenuItem value="car">Car</MenuItem>
-            </Select>
-          </FormControl>
+          <Dropdown handleFee={handleFee} />
 
           <h3> or </h3>
           <h4> Enter a fee in €/km: </h4>
