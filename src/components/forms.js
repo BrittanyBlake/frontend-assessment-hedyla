@@ -5,11 +5,8 @@ import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
-// import Grid from '@material-ui/core/Grid';
-// import Hidden from '@material-ui/core/Hidden';
 import Input from './Form/Input';
 import OutlinedButton from './Button/Button';
-// import Footer from './Footer/Footer';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -26,7 +23,6 @@ const Forms = () => {
   const [distance, setDistance] = useState(1);
   const [cost, setCost] = useState();
   const [total, setTotal] = useState(0);
-  // const [fee, setFee] = useState(0);
 
   const handleDistanceChange = e => {
     setDistance(e.target.value);
@@ -47,11 +43,6 @@ const Forms = () => {
     console.log(vehicle, cost);
   };
 
-  // const handleCostChange = e => {
-  //   setCost(e.target.value);
-  //   console.log('cost:', cost);
-  // };
-
   const handleClick = () => {
     setTotal(distance * cost);
     console.log(distance, 'distance');
@@ -64,11 +55,6 @@ const Forms = () => {
       <Container maxWidth="md">
 
         <Paper style={{ padding: '10px' }}>
-          {/* <Hidden smDown>
-            <Grid item md={4}>
-              <h3> hello</h3>
-            </Grid>
-          </Hidden> */}
 
           <h4> Enter the Total Distance </h4>
           <Input label="km" handleChange={handleDistanceChange} />
@@ -76,8 +62,6 @@ const Forms = () => {
           <h4> Pick your vehicle to select a pre-determined fee: </h4>
           <FormControl className={classes.formControl}>
             <Select
-                // labelId="demo-simple-select-filled-label"
-                // id="demo-simple-select-filled"
               onChange={handleFee}
               style={{ width: '250px' }}
             >

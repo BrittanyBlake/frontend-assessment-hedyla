@@ -19,5 +19,4 @@ export default OutlinedButton;
 
 OutlinedButton.propTypes = {
   handleClick: PropTypes.func.isRequired,
-  // label: PropTypes.string.isRequired,
 };

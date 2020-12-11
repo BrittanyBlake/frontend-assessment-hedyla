@@ -13,8 +13,6 @@ const Input = ({ label, handleChange }) => {
           required
           id="standard-basic"
           label={label}
-          // defaultValue={defaultValue}
-          // variant="filled"
           onChange={handleChange}
         />
       </div>
@@ -25,11 +23,6 @@ const Input = ({ label, handleChange }) => {
 export default Input;
 
 Input.propTypes = {
-  // defaultValue: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
 };
-
-// Input.defaultProps = {
-//   jobList: [],
-// };

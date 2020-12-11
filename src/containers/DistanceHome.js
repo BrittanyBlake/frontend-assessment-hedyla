@@ -14,7 +14,6 @@ import {
 import { GetDistance } from '../redux/actions/index';
 import Input from '../components/Form/Input';
 import OutlinedButton from '../components/Button/Button';
-// import Footer from '../components/Footer/Footer';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -32,7 +31,6 @@ const HomePage = ({ google }) => {
   const distanceList = useSelector(state => state.distance);
   const [originCord, setOriginCord] = useState('0,0');
   const [destCord, setDestCord] = useState('0,0');
-  // const [distance] = useState(1);
   const [cost, setCost] = useState();
   const [total, setTotal] = useState(0);
   const [center, setCenter] = useState({
@@ -45,7 +43,6 @@ const HomePage = ({ google }) => {
 
   const FetchData = (origin, dest) => {
     dispatch(GetDistance(origin, dest));
-    // dispatch(GetMap());
   };
 
   const handleOrigin = e => {
@@ -61,9 +58,6 @@ const HomePage = ({ google }) => {
     setDestCord(e.target.value);
     console.log('destination', destCord);
   };
-  // Barcelona '41.3851,2.1734'
-  // Granada 37.1773,3.5986
-
   React.useEffect(() => {
     FetchData(originCord, destCord);
     console.log('split', originCord.split(','));
@@ -126,8 +120,6 @@ const HomePage = ({ google }) => {
           <h4> Pick your vehicle to select a pre-determined fee: </h4>
           <FormControl className={classes.formControl}>
             <Select
-              // labelId="demo-simple-select-filled-label"
-              // id="demo-simple-select-filled"
               onChange={handleFee}
               style={{ width: '250px' }}
             >
@@ -197,6 +189,5 @@ export default GoogleApiWrapper({
 })(HomePage);
 
 HomePage.propTypes = {
-  // defaultValue: PropTypes.string.isRequired,
   google: PropTypes.string.isRequired,
 };
