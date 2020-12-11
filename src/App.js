@@ -3,9 +3,9 @@ import {
   Switch, Route, Redirect,
 } from 'react-router-dom';
 import SimpleCalc from './components/SimpleCalc';
-import DistanceHome from './containers/DistanceHome';
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
+import ComplexCalcHome from './containers/ComplexCalcHome';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
 
       <Switch>
         <Route path="/manual" exact component={SimpleCalc} />
-        <Route path="/" exact component={DistanceHome} />
+        <Route path="/" exact component={ComplexCalcHome} />
         <Redirect to="/" />
       </Switch>
       <Footer />

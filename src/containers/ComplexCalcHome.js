@@ -2,16 +2,13 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 // import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Container from '@material-ui/core/Container';
+
 import {
   Map, Marker, Polyline, GoogleApiWrapper,
 } from 'google-maps-react';
 import { GetDistance } from '../redux/actions/index';
-import Input from '../components/Form/Input';
-import OutlinedButton from '../components/Button/Button';
-import Dropdown from '../components/Form/Dropdown';
+
+import ComplexCalc from '../components/ComplexCalc';
 
 // const useStyles = makeStyles(theme => ({
 //   formControl: {
@@ -89,47 +86,22 @@ const HomePage = ({ google }) => {
     setZoom(5);
   };
 
-  const triangleCoords = [
-    { lat: originCord.split(',')[0], lng: originCord.split(',')[1] },
-    { lat: destCord.split(',')[0], lng: destCord.split(',')[1] },
-  ];
+  // const triangleCoords = [
+  //   { lat: originCord.split(',')[0], lng: originCord.split(',')[1] },
+  //   { lat: destCord.split(',')[0], lng: destCord.split(',')[1] },
+  // ];
 
-  console.log('tri', triangleCoords);
+  // console.log('tri', triangleCoords);
 
   return (
     <div>
-      <h1>Calculate the Cost of your Route by Entering Coordinates</h1>
-      <Container maxWidth="md">
-        <Paper style={{ padding: '10px', marginBottom: '20px' }}>
-          <Container maxWidth="sm">
-            <Grid container spacing={3} maxWidth="xs">
-              <Grid item xs={6}>
-                <Input label="Origin Coordinates" handleChange={handleOrigin} />
-              </Grid>
-              <Grid item xs={6}>
-                <Input
-                  label="Destination Coordinates"
-                  handleChange={handleDestination}
-                />
-              </Grid>
-            </Grid>
-          </Container>
-
-          <h4> Pick your vehicle to select a pre-determined fee: </h4>
-          <Dropdown handleFee={handleFee} />
-
-          <h3> or </h3>
-          <h4> Enter a fee in €/km: </h4>
-          <Input label="€/km" handleChange={handleFee} />
-
-          <OutlinedButton handleClick={handleClick} />
-          <h2>
-            Total cost of route: €
-            {total}
-          </h2>
-        </Paper>
-      </Container>
-
+      <ComplexCalc
+        handleOrigin={handleOrigin}
+        handleDestination={handleDestination}
+        handleFee={handleFee}
+        handleClick={handleClick}
+        total={total}
+      />
       <Map
         style={{
           height: '60vh',
