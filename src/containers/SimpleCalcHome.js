@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
-// import Paper from '@material-ui/core/Paper';
-// import Container from '@material-ui/core/Container';
-// import Input from './Form/Input';
-// import OutlinedButton from './Button/Button';
-// import Dropdown from './Form/Dropdown';
 import SimpleCalc from '../components/SimpleCalc';
 
 const SimpleCalcHome = () => {
-  // const classes = useStyles();
   const [distance, setDistance] = useState(1);
   const [cost, setCost] = useState();
   const [total, setTotal] = useState(0);

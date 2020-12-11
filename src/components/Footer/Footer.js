@@ -28,7 +28,6 @@ const Footer = () => {
     <Box
       style={{
         backgroundColor: '#13151D',
-        // height: '350px',
         marginTop: '400px',
       }}
       width="100%"

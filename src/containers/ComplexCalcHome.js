@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-// import { makeStyles } from '@material-ui/core/styles';
 
 import {
   Map, Marker, Polyline, GoogleApiWrapper,
@@ -10,18 +9,7 @@ import { GetDistance } from '../redux/actions/index';
 
 import ComplexCalc from '../components/ComplexCalc';
 
-// const useStyles = makeStyles(theme => ({
-//   formControl: {
-//     margin: theme.spacing(1),
-//     minWidth: 120,
-//   },
-//   selectEmpty: {
-//     marginTop: theme.spacing(2),
-//   },
-// }));
-
 const HomePage = ({ google }) => {
-  // const classes = useStyles();
   const dispatch = useDispatch();
   const distanceList = useSelector(state => state.distance);
   const [originCord, setOriginCord] = useState('0,0');
@@ -85,13 +73,6 @@ const HomePage = ({ google }) => {
     console.log('new center', center);
     setZoom(5);
   };
-
-  // const triangleCoords = [
-  //   { lat: originCord.split(',')[0], lng: originCord.split(',')[1] },
-  //   { lat: destCord.split(',')[0], lng: destCord.split(',')[1] },
-  // ];
-
-  // console.log('tri', triangleCoords);
 
   return (
     <div>
