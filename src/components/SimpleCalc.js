@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 // import { makeStyles } from '@material-ui/core/styles';
 
 // import FormControl from '@material-ui/core/FormControl';
@@ -18,60 +19,40 @@ import Dropdown from './Form/Dropdown';
 //   },
 // }));
 
-const Forms = () => {
-  // const classes = useStyles();
-  const [distance, setDistance] = useState(1);
-  const [cost, setCost] = useState();
-  const [total, setTotal] = useState(0);
+const SimpleCalc = ({
+  handleDistanceChange,
+  handleFee,
+  handleClick,
+  total,
+}) => (
+  <div>
+    <h1>Calculate the Cost of your Route</h1>
+    <Container maxWidth="md">
+      <Paper style={{ padding: '10px' }}>
+        <h4> Enter the Total Distance </h4>
+        <Input label="km" handleChange={handleDistanceChange} />
 
-  const handleDistanceChange = e => {
-    setDistance(e.target.value);
-    console.log('distance:', distance);
-  };
+        <h4> Pick your vehicle to select a pre-determined fee: </h4>
+        <Dropdown handleFee={handleFee} />
 
-  const handleFee = e => {
-    const vehicle = e.target.value;
-    if (vehicle === 'van') {
-      setCost(0.25);
-    } else if (vehicle === 'truck') {
-      setCost(0.50);
-    } else if (vehicle === 'car') {
-      setCost(0.10);
-    } else {
-      setCost(e.target.value);
-    }
-    console.log(vehicle, cost);
-  };
+        <h3> or </h3>
+        <h4> Enter a fee in €/km: </h4>
+        <Input label="€/km" handleChange={handleFee} />
+        <OutlinedButton handleClick={handleClick} />
+        <h2>
+          Total cost of route: €
+          {total}
+        </h2>
+      </Paper>
+    </Container>
+  </div>
+);
 
-  const handleClick = () => {
-    setTotal(distance * cost);
-    console.log(distance, 'distance');
-    console.log(cost, 'cost');
-  };
+export default SimpleCalc;
 
-  return (
-    <div>
-      <h1>Calculate the Cost of your Route</h1>
-      <Container maxWidth="md">
-        <Paper style={{ padding: '10px' }}>
-          <h4> Enter the Total Distance </h4>
-          <Input label="km" handleChange={handleDistanceChange} />
-
-          <h4> Pick your vehicle to select a pre-determined fee: </h4>
-          <Dropdown handleFee={handleFee} />
-
-          <h3> or </h3>
-          <h4> Enter a fee in €/km: </h4>
-          <Input label="€/km" handleChange={handleFee} />
-          <OutlinedButton handleClick={handleClick} />
-          <h2>
-            Total cost of route: €
-            {total}
-          </h2>
-        </Paper>
-      </Container>
-    </div>
-  );
+SimpleCalc.propTypes = {
+  handleDistanceChange: PropTypes.func.isRequired,
+  handleFee: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  total: PropTypes.number.isRequired,
 };
-
-export default Forms;
