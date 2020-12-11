@@ -40,7 +40,7 @@
 * [About the Project](#about-the-project)
 * [Installation](#installation)
 * [Live Link](#Live-Link-(Heroku))
-* [Puppy Health API](#Puppy-Health-Api)
+* [Route Cost Calculator](#Route-cost-calculator)
 * [Built With](#built-with)
 * [Future Updates](#future-updates)
 * [Contact](#Authors)
