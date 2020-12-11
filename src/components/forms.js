@@ -9,6 +9,7 @@ import Container from '@material-ui/core/Container';
 // import Hidden from '@material-ui/core/Hidden';
 import Input from './Form/Input';
 import OutlinedButton from './Button/Button';
+// import Footer from './Footer/Footer';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -100,6 +101,7 @@ const Forms = () => {
         </Paper>
       </Container>
     </div>
+
   );
 };
 

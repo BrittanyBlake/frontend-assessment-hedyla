@@ -5,11 +5,12 @@ import {
 import Forms from './components/forms';
 import DistanceHome from './containers/DistanceHome';
 import Nav from './components/Nav/Nav';
+import Footer from './components/Footer/Footer';
+// import Footer from './components/Footer/Footer';
 
 function App() {
   return (
     <div className="App">
-
       <Nav />
 
       <Switch>
@@ -17,7 +18,7 @@ function App() {
         <Route path="/auto" exact component={DistanceHome} />
         <Redirect to="/" />
       </Switch>
-
+      <Footer />
     </div>
   );
 }

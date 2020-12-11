@@ -13,6 +13,7 @@ import {
 import { GetDistance } from '../redux/actions/index';
 import Input from '../components/Form/Input';
 import OutlinedButton from '../components/Button/Button';
+// import Footer from '../components/Footer/Footer';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -144,43 +145,44 @@ const HomePage = ({ google }) => {
       <h2>
         Total cost of route: €
         {total}
-        {' '}
       </h2>
-      <div>
-        <Map
-          style={{
-            height: '75vh',
+      <Map
+        style={{
+          height: '60vh',
+        }}
+        google={google}
+        initialCenter={center}
+        zoom={zoom}
+      >
+        <Marker
+          position={{
+            lat: originCord.split(',')[0],
+            lng: originCord.split(',')[1],
           }}
-          google={google}
-          initialCenter={center}
-          zoom={zoom}
-        >
-          <Marker
-            position={{
+        />
+        <Marker
+          position={{
+            lat: destCord.split(',')[0],
+            lng: destCord.split(',')[1],
+          }}
+        />
+        <Polyline
+          path={[
+            {
               lat: originCord.split(',')[0],
               lng: originCord.split(',')[1],
-            }}
-          />
-          <Marker
-            position={{
+            },
+            {
               lat: destCord.split(',')[0],
               lng: destCord.split(',')[1],
-            }}
-          />
-          <Polyline
-            path={[{
-              lat: originCord.split(',')[0],
-              lng: originCord.split(',')[1],
-            }, {
-              lat: destCord.split(',')[0],
-              lng: destCord.split(',')[1],
-            }]}
-            strokeColor="#0000FF"
-            strokeOpacity={0.8}
-            strokeWeight={2}
-          />
-        </Map>
-      </div>
+            },
+          ]}
+          strokeColor="#0000FF"
+          strokeOpacity={0.8}
+          strokeWeight={2}
+        />
+      </Map>
+
     </div>
   );
 };
