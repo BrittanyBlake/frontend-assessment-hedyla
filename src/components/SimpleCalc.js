@@ -5,6 +5,9 @@ import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
+import LocalShippingTwoToneIcon from '@material-ui/icons/LocalShippingTwoTone';
+import AirportShuttleTwoToneIcon from '@material-ui/icons/AirportShuttleTwoTone';
+import DriveEtaTwoToneIcon from '@material-ui/icons/DriveEtaTwoTone';
 import Input from './Form/Input';
 import OutlinedButton from './Button/Button';
 
@@ -53,24 +56,34 @@ const Forms = () => {
     <div>
       <h1>Calculate the Cost of your Route</h1>
       <Container maxWidth="md">
-
         <Paper style={{ padding: '10px' }}>
-
           <h4> Enter the Total Distance </h4>
           <Input label="km" handleChange={handleDistanceChange} />
 
           <h4> Pick your vehicle to select a pre-determined fee: </h4>
           <FormControl className={classes.formControl}>
-            <Select
-              onChange={handleFee}
-              style={{ width: '250px' }}
-            >
+            <Select onChange={handleFee} style={{ width: '250px' }}>
               <MenuItem value="">
                 <em>Pick One</em>
               </MenuItem>
-              <MenuItem value="truck">Truck</MenuItem>
-              <MenuItem value="van">Van</MenuItem>
-              <MenuItem value="car">Car</MenuItem>
+              <MenuItem value="truck">
+                {' '}
+                <LocalShippingTwoToneIcon />
+                {' '}
+                Truck
+              </MenuItem>
+              <MenuItem value="van">
+                {' '}
+                <AirportShuttleTwoToneIcon />
+                {' '}
+                Van
+              </MenuItem>
+              <MenuItem value="car">
+                {' '}
+                <DriveEtaTwoToneIcon />
+                {' '}
+                Car
+              </MenuItem>
             </Select>
           </FormControl>
 
@@ -85,7 +98,6 @@ const Forms = () => {
         </Paper>
       </Container>
     </div>
-
   );
 };
 
