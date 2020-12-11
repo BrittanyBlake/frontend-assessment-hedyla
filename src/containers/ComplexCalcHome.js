@@ -22,30 +22,21 @@ const HomePage = ({ google }) => {
   });
   const [zoom, setZoom] = useState(3);
 
-  console.log('center', center);
-
   const FetchData = (origin, dest) => {
     dispatch(GetDistance(origin, dest));
   };
 
   const handleOrigin = e => {
     e.preventDefault();
-    console.log(e.target.value);
     setOriginCord(e.target.value);
-    console.log('origin', originCord);
   };
 
   const handleDestination = e => {
     e.preventDefault();
-    console.log(e.target.value);
     setDestCord(e.target.value);
-    console.log('destination', destCord);
   };
   React.useEffect(() => {
     FetchData(originCord, destCord);
-    console.log('split', originCord.split(','));
-    console.log('one', originCord.split(',')[0]);
-    console.log('one', originCord.split(',')[1]);
   }, [originCord, destCord]);
 
   const handleFee = e => {
@@ -59,18 +50,14 @@ const HomePage = ({ google }) => {
     } else {
       setCost(e.target.value);
     }
-    console.log(vehicle, cost);
   };
 
   const handleClick = () => {
     setTotal(distanceList.routes[0].distance * cost);
-    console.log(cost, 'cost');
-    console.log('distance', distanceList.routes[0].distance);
     setCenter({
       lat: originCord.split(',')[0],
       lng: originCord.split(',')[1],
     });
-    console.log('new center', center);
     setZoom(5);
   };
 

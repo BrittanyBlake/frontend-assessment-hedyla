@@ -8,7 +8,6 @@ const SimpleCalcHome = () => {
 
   const handleDistanceChange = e => {
     setDistance(e.target.value);
-    console.log('distance:', distance);
   };
 
   const handleFee = e => {
@@ -22,13 +21,10 @@ const SimpleCalcHome = () => {
     } else {
       setCost(e.target.value);
     }
-    console.log(vehicle, cost);
   };
 
   const handleClick = () => {
     setTotal(distance * cost);
-    console.log(distance, 'distance');
-    console.log(cost, 'cost');
   };
 
   return (
