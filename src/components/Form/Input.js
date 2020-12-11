@@ -11,14 +11,13 @@ const Input = ({ label, handleChange }) => {
       <div>
         <TextField
           required
-          id="filled-required"
+          id="standard-basic"
           label={label}
           // defaultValue={defaultValue}
-          variant="filled"
+          // variant="filled"
           onChange={handleChange}
         />
       </div>
-
     </form>
   );
 };

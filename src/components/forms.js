@@ -3,6 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
+import Paper from '@material-ui/core/Paper';
+import Container from '@material-ui/core/Container';
+// import Grid from '@material-ui/core/Grid';
+// import Hidden from '@material-ui/core/Hidden';
 import Input from './Form/Input';
 import OutlinedButton from './Button/Button';
 
@@ -55,40 +59,46 @@ const Forms = () => {
 
   return (
     <div>
-      <form>
-        <h3> Enter the Total Distance </h3>
-        <Input label="Distance" handleChange={handleDistanceChange} />
+      <h1>Calculate the Cost of your Route</h1>
+      <Container maxWidth="md">
 
-        <h3> Pick your vehicle to select a pre-determined fee: </h3>
-        <FormControl variant="filled" className={classes.formControl}>
-          <Select
-            labelId="demo-simple-select-filled-label"
-            id="demo-simple-select-filled"
-            onChange={handleFee}
-            style={{ width: '250px' }}
-          >
-            <MenuItem value="">
-              <em>Pick One</em>
-            </MenuItem>
-            <MenuItem value="truck">Truck</MenuItem>
-            <MenuItem value="van">Van</MenuItem>
-            <MenuItem value="car">Car</MenuItem>
-          </Select>
-        </FormControl>
+        <Paper style={{ padding: '10px' }}>
+          {/* <Hidden smDown>
+            <Grid item md={4}>
+              <h3> hello</h3>
+            </Grid>
+          </Hidden> */}
 
-        <h4> or </h4>
-        <h3> Enter a fee in €/km: </h3>
-        <Input label="€/km" handleChange={handleFee} />
-      </form>
-      <OutlinedButton handleClick={handleClick} />
-      {/* <button type="button" onClick={handleClick}>
-        {' '}
-        Calculate
-  </button> */}
-      <h2>
-        Total cost of route: €
-        {total}
-      </h2>
+          <h4> Enter the Total Distance </h4>
+          <Input label="km" handleChange={handleDistanceChange} />
+
+          <h4> Pick your vehicle to select a pre-determined fee: </h4>
+          <FormControl className={classes.formControl}>
+            <Select
+                // labelId="demo-simple-select-filled-label"
+                // id="demo-simple-select-filled"
+              onChange={handleFee}
+              style={{ width: '250px' }}
+            >
+              <MenuItem value="">
+                <em>Pick One</em>
+              </MenuItem>
+              <MenuItem value="truck">Truck</MenuItem>
+              <MenuItem value="van">Van</MenuItem>
+              <MenuItem value="car">Car</MenuItem>
+            </Select>
+          </FormControl>
+
+          <h3> or </h3>
+          <h4> Enter a fee in €/km: </h4>
+          <Input label="€/km" handleChange={handleFee} />
+          <OutlinedButton handleClick={handleClick} />
+          <h2>
+            Total cost of route: €
+            {total}
+          </h2>
+        </Paper>
+      </Container>
     </div>
   );
 };

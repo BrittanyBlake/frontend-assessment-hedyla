@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: 'Nunita Sans',sans-serif;
 }
 
 a {
@@ -9,4 +10,8 @@ a {
 .map{
   height: 300px;
   width: 300px;
+}
+
+h4{
+  font-weight: normal;
 }
